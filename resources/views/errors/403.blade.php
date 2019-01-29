@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>页面出错了</title>
+    <title>页面出错了403</title>
     <meta http-equiv="refresh" content="10;url=//bellawb.test" />
 </head>
 
