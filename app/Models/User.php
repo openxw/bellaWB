@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -34,7 +35,7 @@ class User extends Authenticatable
 
         static::creating(function ($user)
         {
-            # code...
+            # 在user模型初始化后,创建随机字符串
             $user->activation_token = str_random(30);
         });
     }
@@ -49,5 +50,10 @@ class User extends Authenticatable
             return "http://www.gravatar.com/avatar/$hash?s=$size";
         }
 
+    public function sendPasswordResetNotification($token)
+    {
+        # code...
+        $this->notify(new ResetPassword($token));
+    }
 
 }
